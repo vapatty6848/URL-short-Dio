@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.urlController = void 0;
+const tslib_1 = require("tslib");
+const shortid_1 = (0, tslib_1.__importDefault)(require("shortid"));
+const constants_1 = require("../config/constants");
+class urlController {
+    async shorten(req, res) {
+        const { originUrl } = req.body;
+        console.log(req.body);
+        const hash = shortid_1.default.generate();
+        const shortURL = `${constants_1.config.API_URL}/${hash}`;
+        res.json({ originUrl, hash, shortURL });
+    }
+}
+exports.urlController = urlController;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXJsQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jb250cm9sbGVyL3VybENvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUNBLG1FQUE4QjtBQUM5QixtREFBNkM7QUFFN0MsTUFBYSxhQUFhO0lBQ2YsS0FBSyxDQUFDLE9BQU8sQ0FBQyxHQUFZLEVBQUUsR0FBYTtRQUM3QyxNQUFNLEVBQUUsU0FBUyxFQUFFLEdBQUcsR0FBRyxDQUFDLElBQUksQ0FBQTtRQUM5QixPQUFPLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUN0QixNQUFNLElBQUksR0FBRyxpQkFBTyxDQUFDLFFBQVEsRUFBRSxDQUFBO1FBQy9CLE1BQU0sUUFBUSxHQUFHLEdBQUcsa0JBQU0sQ0FBQyxPQUFPLElBQUksSUFBSSxFQUFFLENBQUE7UUFDNUMsR0FBRyxDQUFDLElBQUksQ0FBQyxFQUFFLFNBQVMsRUFBRSxJQUFJLEVBQUUsUUFBUSxFQUFDLENBQUMsQ0FBQTtJQUN6QyxDQUFDO0NBQ0o7QUFSRCxzQ0FRQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJlcXVlc3QsIFJlc3BvbnNlIH0gZnJvbSBcImV4cHJlc3NcIjtcbmltcG9ydCBzaG9ydElkIGZyb20gXCJzaG9ydGlkXCI7XG5pbXBvcnQgeyBjb25maWcgfSBmcm9tIFwiLi4vY29uZmlnL2NvbnN0YW50c1wiO1xuXG5leHBvcnQgY2xhc3MgdXJsQ29udHJvbGxlciB7XG4gICAgcHVibGljIGFzeW5jIHNob3J0ZW4ocmVxOiBSZXF1ZXN0LCByZXM6IFJlc3BvbnNlKTogUHJvbWlzZTx2b2lkPiB7XG4gICAgICAgY29uc3QgeyBvcmlnaW5VcmwgfSA9IHJlcS5ib2R5XG4gICAgICAgY29uc29sZS5sb2cocmVxLmJvZHkpO1xuICAgICAgIGNvbnN0IGhhc2ggPSBzaG9ydElkLmdlbmVyYXRlKClcbiAgICAgICBjb25zdCBzaG9ydFVSTCA9IGAke2NvbmZpZy5BUElfVVJMfS8ke2hhc2h9YFxuICAgICAgIHJlcy5qc29uKHsgb3JpZ2luVXJsLCBoYXNoLCBzaG9ydFVSTH0pXG4gICAgfVxufVxuXG5cblxuLyogUGFzc29zIFxuLSB2ZXJpZmljYXIgc2UgYSB1cmwgbsOjbyBleGlzdGVcbi0gY3JpYXIgbyBoYXNoIHVybFxuLSBzYWx2YXIgYSB1cmwgbm8gYmFuY29cbi0gcmV0b3JuYXIgYSB1cmwgc2FsdmFcbiovIl19
