@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import shortId from "shortid";
 import { config } from "../config/constants";
+import { URLModel } from "../database/model/URL";
 
 export class urlController {
     public async shorten(req: Request, res: Response): Promise<void> {
@@ -13,12 +14,15 @@ export class urlController {
 
     public async redirect(req: Request, res: Response): Promise<void> {
        const { hash } = req.params
-       const url = {
-           originUrl: "https://cloud.mongodb.com/v2#/org/601161db62036a6bf8a49d91/",
-           hash: "L2-GqsbV6",
-           shortURL: "http://localhost:3000/L2-GqsbV6"
+       const url = await URLModel.findOne({ hash })
+
+       if (url) {
+           response.redirect(url.originURL)
+           return
        }
-       res.redirect(url.originUrl)
+
+       response.status(400).json({ error: 'URL not found ' })
+
     }
 }
 
