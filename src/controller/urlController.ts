@@ -10,7 +10,18 @@ export class urlController {
        const shortURL = `${config.API_URL}/${hash}`
        res.json({ originUrl, hash, shortURL})
     }
+
+    public async redirect(req: Request, res: Response): Promise<void> {
+       const { hash } = req.params
+       const url = {
+           originUrl: "https://cloud.mongodb.com/v2#/org/601161db62036a6bf8a49d91/",
+           hash: "L2-GqsbV6",
+           shortURL: "http://localhost:3000/L2-GqsbV6"
+       }
+       res.redirect(url.originUrl)
+    }
 }
+
 
 
 
@@ -19,4 +30,12 @@ export class urlController {
 - criar o hash url
 - salvar a url no banco
 - retornar a url salva
+*/
+
+
+/* Passos 2 
+ - Pegar o hash da Url
+ - Encontrar a Url original pelo  hash encontrado
+ - Direcionar  para a Url original a partir do que encontramos no banco de dados
+
 */
